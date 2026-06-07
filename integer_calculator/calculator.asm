@@ -79,7 +79,7 @@ do_div:
 div_by_zero:
     ; printf("Can't divide by zero")
     mov rdi, zero_div_msg
-    xor eax, eax
+    mov al, 1
     call printf
 
     jmp done
