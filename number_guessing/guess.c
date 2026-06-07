@@ -8,16 +8,27 @@ int main()
   
   int number = rand() % 10 + 1;
 
-  int guess;
+  int guess, count = 0;
 
-  printf("Guess a number (1-10): ");
-  scanf("%d", &guess);
+  printf("You have 10 attempts to guess the correct number\n");
 
-  if (guess == number) {
-    printf("You guessed correctly!\n");
-  } else {
-    printf("You guessed incorrectly, the correct number was %d\n", number);
+  while (count++ < 10) {
+    printf("(Attempt %d) Guess a number (1-10): ", count);
+    if (scanf("%d", &guess) != 1) {
+      return 1;
+    }
+
+    if (guess == number) {
+      printf("You guessed correctly!\n");
+      return 0;
+    } else if (guess > number){
+      printf("You guessed incorrectly, the number is lower\n");
+    } else if (guess < number) {
+      printf("You guessed incorrectly, the number is higher\n");
+    }
   }
+
+  printf("Game over, the correct number was %d\n", number);
 
   return 0;
 }
